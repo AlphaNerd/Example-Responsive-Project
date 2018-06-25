@@ -1,7 +1,7 @@
 {
   "name": "algaecal",
   "version": "1.0.0",
-  "description": "Basic project for skills demonstration",
+  "description": "Basic project for skills demonstration of HTML, CSS, Javascript",
   "main": "index.js",
   "scripts": {
     "test": "test"
