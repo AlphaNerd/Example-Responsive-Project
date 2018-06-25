@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AlgaeCal Example Project">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Jeff Coleman">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- compiled scss -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- Mobile-first styles are part of the core framework -->
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Angular 1.6.5-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-sanitize.min.js"></script>
+    <!-- sanitize the json html returned from API. This is to satisfy angularjs protections against XSS and other security issues. 
+    https://code.angularjs.org/1.6.5/docs/error/$sce/unsafe -->
+        
+    <script src="./js/app.js"></script>
+    <title>AlgaeCal - Example Project</title>
+</head>
+
+<body ng-app="myapp" ng-controller="myCtrl">
+    <div class="outter">
+        <div class="inner">
+            <!-- HEADER - Contact and Logo -->
+            <header mydata="DATA" ng-if="DATA.office_hours"></header>
+            <!-- INTRO - Quote Content -->
+            <div class="intro container">
+                <div class="title">Introducing</div>
+                <div class="row">
+                    <div class="col">
+                        <h1>The ONLY Calcium Supplement that <span>Increases Bone Density<sup>*</sup></span></h1>
+                        <p>...or Your Money Back</p>
+                    </div>
+                </div>
+            </div>
+            <!-- VIDEO & PACKAGES - Video + bonus packages at 2:13 in video -->
+            <div class="container video">
+                <div class="row padding">
+                    <div class="col">
+                        <h2>Build <b>brand new bone</b> WITHIN 6 MONTHS with this <b>rare algae</b> calcium ...even if you're 85!</h2>
+                        <script src="//fast.wistia.com/embed/medias/cecdwaq3dz.jsonp" async></script>
+                        <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+                        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                <div class="wistia_embed wistia_async_cecdwaq3dz videoFoam=true " style="height:100%;width:100%">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="SHOW_PACKAGES">
+                    <div class="anchor" id="Products"></div>
+                    <div class="col-lg product-box animated fadeIn" ng-repeat="item in ITEMS track by $index" ng-class="item.popular ? 'popular' : ''">
+                        <h5 ng-if="item.popular">Most Popular</h5>
+                        <div class="badge">{{item.discount}}%
+                            <br/>Off</div>
+                        <div class="inner container">
+                            <div class="title">{{item.title}}</div>
+                            <div class="set set-1">{{item.set1}}</div>
+                            <div class="set set-2">{{item.set2}}</div>
+                            <div class="image">
+                                <img ng-src="{{item.image}}" alt="{{item.title}}">
+                            </div>
+                            <div class="price"><sup>$</sup>{{item.price}} <sub>{{item.currency}}</sub></div>
+                            <div class="daily-price">Only <b>{{item.price_by_day | currency:'$'}}</b>/Day!</div>
+                            <a href="https://www.algaecal.com/product/bone-builder-packs/ " class="button assertive"> Add to Cart </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TABLES - HTML tables, not images -->
+            <div class="container labels">
+                <div class="title">
+                    <h3>AlgaeCal Plus</h3>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h2>Suppliment Facts</h2>
+                        <div class="servings">
+                            <p>4 Capsules Per Day</p>
+                            <p>Servings Per Container: 22</p>
+                        </div>
+                        <div class="table container">
+                            <div class="row legend">
+                                <div class="col-8">Amount Per Serving</div>
+                                <div class="col value">%DV</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Vitamin C 50mg</div>
+                                    <div class="caption">(as calcium ascorbate)</div>
+                                </div>
+                                <div class="col value">84%</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Vitamin D3 1600 IU</div>
+                                    <div class="caption">(as cholecalciferol)</div>
+                                </div>
+                                <div class="col value">400%</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Vitamin K2 100mcg</div>
+                                    <div class="caption">(as menaquinone-7)</div>
+                                </div>
+                                <div class="col value">126%</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Calcium 720mg</div>
+                                    <div class="caption">(from algas calcareas)</div>
+                                </div>
+                                <div class="col value">72%</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Magnesium 350mg</div>
+                                    <div class="caption">(from algas calcareas and magnesium oxide)</div>
+                                </div>
+                                <div class="col value">88%</div>
+                            </div>
+                            <div class="row ingredient solo">
+                                <div class="col-8">
+                                    <div class="name">Boron 3.0 mg*</div>
+                                    <div class="caption">(as glycinate)</div>
+                                </div>
+                            </div>
+                            <div class="row footer">
+                                <div class="col-8">
+                                    <div class="name">*Daily Value (DV) not established</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <h3>Strontium Boost</h3>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h2>Suppliment Facts</h2>
+                        <div class="servings">
+                            <p>2 Capsules Per Day</p>
+                            <p>Servings Per Container: 30</p>
+                        </div>
+                        <div class="table container">
+                            <div class="row legend">
+                                <div class="col-8">Amount Per Serving</div>
+                            </div>
+                            <div class="row ingredient">
+                                <div class="col-8">
+                                    <div class="name">Strontium</div>
+                                    <div class="caption">(from Strontium Citrate)</div>
+                                </div>
+                                <div class="col value">680 mg*</div>
+                            </div>
+                            <div class="row footer">
+                                <div class="col-8">
+                                    <div class="name">*Daily Value (DV) not established</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 7 Years Strong - Content -->
+            <div class="container sevenyears">
+                <div class="row">
+                    <div class="col">
+                        <div class="inlay">
+                            <img src="../img/large7badge.png" alt="7 Year Warranty">
+                            <h3 class="title">Stronger Bones For 7 Years Guarantee</h3>
+                            <p>When you follow directions for use of AlgaeCal Plus and Strotium Boost - we guarantee you will see increased bone density in EVERY follow-up bone scan you have while using these 2 products - or we will refund every penny you paid for our oroducts between your scans. This guarantee extends to every scan you have for the next 7 years! Also, if you are unsatisfied at any time you can return my product for a full refund, no questions asked! <a data-toggle="modal" data-target="#Modal">Click Here for Details!</a></p>
+                            <div class="profile-pic">
+                                <img src="../img/dean-profile-pic.png" alt="Dean Neuls">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- As Seen On... - Content -->
+            <div class="container tv">
+                <div class="row">
+                    <div class="col">
+                        <div class="header-bar">
+                            As Seen On:
+                        </div>
+                        <div class="logo">
+                            <img src="../img/as-seen-on-tv.png" alt="As seen on tv.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SCIENTIFIC REFERNCES & BUY NOW - Content -->
+            <div class="container science">
+                <div class="row">
+                    <div class="col">
+                        <h4>Scientific References</h4>
+                        <ol>
+                            <li>Marques A, Ferreira RJ, Santos E, et al. The accuracy of osteoporotic fracture risk prediction tools: a systematic review and meta-analysis. Ann Rheum Dis. 2015 Nov;74(11):1958-67.
+                                <br/>doi:
+                                <br/>10.1136/annrheumdis-2015-207907. Epub 2015 Aug 6. PMID: 26248637,</li>
+                            <li>Riggs BL, Melton LJ 3rd. The worldwide problem of osteoporosis: insights afforded by epidemiology. Bone. 1995 Nov:17(5 Suppl):505S-511S. PMID: 8573428</li>
+                            <li>Marques A, Ferreira RJ, Santos E, et al. The accuracy of osteoporotic fracture risk prediction tools: a systematic review and meta-analysis. Ann Rheum Dis. 2015 Nov;74(11):1958-67.
+                                <br/>doi:
+                                <br/>10.1136/annrheumdis-2015-207907. Epub 2015 Aug 6. PMID: 26248637,</li>
+                            <li>https://www.algaecal.com/expert-insights/prescription-drugs-that-cause-osteoporosis/</li>
+                        </ol>
+                        <a href="#">View Full Reference List...</a>
+                        <a href="#Products" class="button assertive" ng-click="activateProducts()"> Buy Now </a>
+                    </div>
+                </div>
+            </div>
+            <!-- FOOTER -->
+            <footer></footer>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="guaranteeModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close top" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <header mydata="DATA"></header>
+                <div class="modal-content">
+                    <p ng-bind-html="DATA['7yr_full_copy']"></p>
+                </div>
+                <footer></footer>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

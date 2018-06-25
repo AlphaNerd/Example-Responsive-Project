@@ -1,0 +1,27 @@
+{
+  "name": "algaecal",
+  "version": "1.0.0",
+  "description": "Basic project for skills demonstration",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlphaNerd/AlgaeCal.git"
+  },
+  "keywords": [
+    "algaecal"
+  ],
+  "author": "Jeffrey Coleman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlphaNerd/AlgaeCal/issues"
+  },
+  "homepage": "https://github.com/AlphaNerd/AlgaeCal#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  }
+}
