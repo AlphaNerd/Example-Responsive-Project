@@ -158,7 +158,6 @@ calculate the open/close hours.
 		           	var check = val.office_hours.filter(function(obj){ /// filter through for correct day data
 		           		var today = new Date();
 						var now = today.getHours()+today.getMinutes().toString() /// get current time in hrs
-
 		           		if(parseInt(obj.day) == today.getDay()){ /// check against today
 		           			// console.log(now, obj.starting_time, obj.closing_time)
 		           			if(obj.starting_time < now && obj.closing_time > now){ /// check hrs
