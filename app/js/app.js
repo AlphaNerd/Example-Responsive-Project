@@ -20,6 +20,7 @@ var app = angular.module('myapp', [
 	$api.getData().then(function(res){
     	var obj = res.data.acf
 		$scope.DATA = obj
+		// console.log(obj)
 	})
 
 	///// Show products even if video paused before 2:13 and user scrolls to bottom and clicks "buy now"
@@ -156,9 +157,11 @@ calculate the open/close hours.
            			var val = newValue || oldValue //// watch for $api data to arrive in scope.
 		           	var check = val.office_hours.filter(function(obj){ /// filter through for correct day data
 		           		var today = new Date();
-						var now = today.getHours().toString(); /// get current time in hrs
+						var now = today.getHours()+today.getMinutes().toString() /// get current time in hrs
+
 		           		if(parseInt(obj.day) == today.getDay()){ /// check against today
-		           			if((obj.starting_time < now) && (obj.closing_time > now)){ /// check hrs
+		           			// console.log(now, obj.starting_time, obj.closing_time)
+		           			if(obj.starting_time < now && obj.closing_time > now){ /// check hrs
 		           				$scope.openForBiz = true //// show message
 		           			}else{
 		           				$scope.openForBiz = false //// hide message
