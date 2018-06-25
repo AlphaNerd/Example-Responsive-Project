@@ -5,4 +5,4 @@
 <p>Email: <a href="mailto:colemanjeff@mac.com">colemanjeff@mac.com</a></p>
 <p>Phone: <a href="tel:506-899-2546">506-899-2546</a></p>
 
-<p>$ gulp watch</p>
+<p>$ gulp run</p>
