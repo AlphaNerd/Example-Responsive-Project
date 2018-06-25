@@ -1,4 +1,4 @@
-<h1>AlgaeCal Example Project</h1>h1>
+<h1>AlgaeCal Example Project</h1>
 <h5>Author:</h5>
 <p>Jeffrey Coleman</p>
 <h4>Contact:</h4>
