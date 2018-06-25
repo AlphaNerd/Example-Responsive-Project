@@ -23,12 +23,6 @@ var app = angular.module('myapp', [
 		// console.log(obj)
 	})
 
-	///// Show products even if video paused before 2:13 and user scrolls to bottom and clicks "buy now"
-	///// This was not in the instructions, but seemed like a use case that may have been omitted.
-	$scope.activateProducts = function(){
-		$scope.SHOW_PACKAGES = true
-	}
-
 	///// Products for hidden boxes. Could be swapped easily for JSON data from $api service.
 	$scope.ITEMS = [{
 		title: "3 Month Supply",
@@ -62,6 +56,12 @@ var app = angular.module('myapp', [
 		popular: false
 	}]
 
+	///// Show products even if video paused before 2:13 and user scrolls to bottom and clicks "buy now"
+	///// This was not in the instructions, but seemed like a use case that may have been omitted.
+	$scope.activateProducts = function(){
+		$scope.SHOW_PACKAGES = true
+	}
+
 	///// Wistia Video Controls and Events
 	window._wq = window._wq || [];
 
@@ -92,7 +92,7 @@ var app = angular.module('myapp', [
 /////////////////////////////////////////////
 /*
 Factory created so that the call could be used in any controller or directive. Using $q allows for promised 
-based calls to the URI and allows for asynchronous behavior in app.
+based calls to the URI and allows for asynchronous behavior in site.
 */
 
 .factory('$api', ['$http', '$q', function($http, $q){
@@ -122,9 +122,9 @@ based calls to the URI and allows for asynchronous behavior in app.
 /////////////////////////////////////////////
 /*
 I have built this as a directive so that it could easily be reused,
-which I have done for the modal, keeping your contact info and branding visible.
+which I have done in the modal, keeping your contact info and branding visible.
 Ideally, I would use the $api call in here for the time check, making this directive 
-completely reusable and independant from controlleers. I did not include here so as to 
+completely reusable and independant from controllers. I did not include here so as to 
 minimize calls to the server.
 
 For now, simply passing in the original DATA object from the scope provides info needed to
@@ -157,12 +157,12 @@ calculate the open/close hours.
            			var val = newValue || oldValue //// watch for $api data to arrive in scope.
 		           	var check = val.office_hours.filter(function(obj){ /// filter through for correct day data
 		           		var today = new Date();
-						var now = today.getHours()+today.getMinutes().toString() /// get current time in hrs
+						var now = today.getHours()+today.getMinutes().toString() /// get current time in hrs and minutes
 		           		if(parseInt(obj.day) == today.getDay()){ /// check against today
 		           			// console.log(now, obj.starting_time, obj.closing_time)
 		           			if(obj.starting_time < now && obj.closing_time > now){ /// check hrs
 		           				$scope.openForBiz = true //// show message
-		           			}else{
+		           			}else{ 
 		           				$scope.openForBiz = false //// hide message
 		           			}
 		           		}
